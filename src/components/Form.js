@@ -21,5 +21,21 @@ export default React.createClass({
         {this.props.children}
       </form>
     );
+  },
+
+  childContextTypes: {
+    update: PropTypes.func,
+    reset: PropTypes.func,
+    submit: PropTypes.func,
+    values: PropTypes.object
+  },
+
+  getChildContext() {
+    return {
+      update: this.props.update,
+      reset: this.props.reset,
+      submit: this.props.submit,
+      values: this.props.values
+    };
   }
 });

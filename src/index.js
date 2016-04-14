@@ -5,7 +5,7 @@ import React, {PropTypes} from 'react';
 import { createStore, applyMiddleware, compose} from 'redux';
 import { connect } from 'react-redux';
 import { Provider } from 'react-redux';
-import thunk from 'react-thunk';
+import thunk from 'redux-thunk';
 import createLogger from 'redux-logger';
 import Form from './components/Form';
 import * as actions from './actions';
