@@ -23,3 +23,5 @@ export default props => (
     <SmartForm {...props} />
   </Provider>
 );
+
+export {default as Text} from './components/Text';
