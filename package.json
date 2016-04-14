@@ -17,6 +17,7 @@
     "webpack": "^1.0.0"
   },
   "dependencies": {
+    "email-validator": "^1.0.4",
     "lodash.assign": "^4.0.8",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
@@ -24,6 +25,7 @@
     "react-tap-event-plugin": "^0.2.0",
     "redux": "^3.4.0",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.0.1"
+    "redux-thunk": "^2.0.1",
+    "valid-url": "^1.0.9"
   }
 }
