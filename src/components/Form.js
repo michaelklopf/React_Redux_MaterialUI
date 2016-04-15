@@ -3,6 +3,10 @@
 // The root component for fields nested inside
 // The component will store the data from its children
 import React, {PropTypes} from 'react';
+import without from 'lodash.without';
+import assign from 'lodash.assign';
+
+const noop = () => undefined;
 
 export default React.createClass({
   displayName: 'Form',
@@ -15,19 +19,42 @@ export default React.createClass({
     onSubmit: PropTypes.func
   },
 
-  render() {
-    return (
-      <form>
-        {this.props.children}
-      </form>
-    );
-  },
-
   childContextTypes: {
     update: PropTypes.func,
     reset: PropTypes.func,
     submit: PropTypes.func,
-    values: PropTypes.object
+    values: PropTypes.object,
+    registerValidation: PropTypes.func,
+    isFormValid: PropTypes.func
+  },
+
+  getDefaultProps() {
+    return {
+      onSubmit: noop
+    };
+  },
+
+  validations: [],
+
+  registerValidation(isValidFunc) {
+    this.validations = [...this.validations, isValidFunc];
+    return this.removeValidation.bind(null, isValidFunc);
+  },
+
+  removeValidation(ref) {
+    this.validations = without(this.validations, ref);
+  },
+
+  isFormValid(showErrors) {
+    return this.validations.reduce(memo, isValidFunc) =>
+      isValidFunc(showErrors) && memo, true);
+  },
+
+  submit() {
+    if (this.isFormValid(true)) {
+      this.props.onSubmit(assign({}, this.props.values));
+      this.props.reset();
+    }
   },
 
   getChildContext() {
@@ -35,7 +62,17 @@ export default React.createClass({
       update: this.props.update,
       reset: this.props.reset,
       submit: this.props.submit,
-      values: this.props.values
+      values: this.props.values,
+      registerValidation: this.registerValidation,
+      isFormValid: this.isFormValid
     };
+  },
+
+  render() {
+    return (
+      <form>
+        {this.props.children}
+      </form>
+    );
   }
 });

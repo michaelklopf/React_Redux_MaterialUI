@@ -19,6 +19,7 @@
   "dependencies": {
     "email-validator": "^1.0.4",
     "lodash.assign": "^4.0.8",
+    "lodash.without": "^4.1.2",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.4",

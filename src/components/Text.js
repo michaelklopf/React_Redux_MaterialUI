@@ -16,7 +16,17 @@ export default React.createClass({
 
   contextTypes: {
     update: PropTypes.func.isRequired,
-    values: PropTypes.object.isRequired
+    values: PropTypes.object.isRequired,
+    registerValidation: PropTypes.func.isRequired
+  },
+
+  componentWillMount() {
+    this.removeValidationFromContext = this.context.registerValidation(show =>
+      this.isValid(show));
+  },
+
+  componentWillUnmount() {
+    this.removeValidationFromContext();
   },
 
   getDefaultProps() {
