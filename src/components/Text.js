@@ -2,6 +2,7 @@
 // src/components/Text.js
 import React, {PropTypes} from 'react';
 import TextField from 'material-ui/lib/text-field';
+import * as validators from '../validators';
 
 export default React.createClass({
   displayName: 'Text',
