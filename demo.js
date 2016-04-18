@@ -2,7 +2,7 @@
 // demo.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form, {Text} from './src/index';
+import Form, {Text, SubmitButton} from './src/index';
 
 ReactDOM.render((
   <Form>
@@ -21,5 +21,6 @@ ReactDOM.render((
       validate={['url']}
       placeholder="Type your website url here"
       label="Website" />
+    <SubmitButton />
   </Form>
 ), document.getElementById('container'));

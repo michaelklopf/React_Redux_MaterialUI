@@ -46,7 +46,7 @@ export default React.createClass({
   },
 
   isFormValid(showErrors) {
-    return this.validations.reduce(memo, isValidFunc) =>
+    return this.validations.reduce((memo, isValidFunc) =>
       isValidFunc(showErrors) && memo, true);
   },
 
